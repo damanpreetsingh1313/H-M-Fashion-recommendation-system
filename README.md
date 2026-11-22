@@ -40,3 +40,37 @@ Final score = weighted blend (sliders in the sidebar); the app shows per-item sc
 * H&M data is Swedish, so seasonal demand is learned with the Northern calendar by default and then
   *served* with whichever calendar you choose (Monsoon borrows Summer/Autumn patterns).
 * Start with 20k sampled customers; raise it if you have RAM (~16 GB handles 100k+).
+  # 👗 H&M Season-Aware Fashion Recommender
+
+An interactive recommendation system built on the real **H&M Personalized Fashion
+Recommendations** dataset. It suggests fashion items based on a shopper's history,
+product details, customer reviews and the **current season**. The season calendar
+is editable, so it works for any climate (for example a long summer and a short
+winter in India).
+
+## Features
+- 🎯 Personalised recommendations for existing or new customers
+- 🌦️ Season awareness with an editable calendar (Northern/Southern Hemisphere, India, or custom month lengths)
+- ⭐ Reviews and purchases you enter update recommendations instantly
+- 🧪 Dataset generator that creates season-aware data and retrains the models
+- 🔍 Explainable results: every pick shows why it was recommended
+- 📊 Offline evaluation (MAP@12, Recall@12) against baseline models
+
+## Tech stack
+Python · pandas · NumPy · scikit-learn (TruncatedSVD, TF-IDF) · VADER sentiment · Streamlit
+
+## Quick start
+pip install -r requirements.txt
+streamlit run app.py
+
+Use the **Demo simulator** in the sidebar to try it without downloading data, or
+place `articles.csv`, `customers.csv` and `transactions_train.csv` from the
+[Kaggle competition](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data)
+in `data/hm/`.
+
+## Team
+Damanpreet Singh · Sehajpreet Singh · Akampreet Singh · Jasraj Singh
+
+## Notes
+The H&M dataset has no review text, so reviews are collected in the app (optionally
+seeded with synthetic ones).
